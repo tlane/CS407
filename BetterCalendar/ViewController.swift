@@ -16,50 +16,46 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     var events = [Event]()
     
+    var todaysEvents = [Event]()
+    
+    var event:Event?
+    
     @IBOutlet weak var eventTable: UITableView!
+
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
         
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return events.count
-        
-        /*
         if section == 0 {
-             return eventsArray.count
+        return todaysEvents.count
         } else {
-            return todaysArray.count
+            return events.count
         }
-        */
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-        
-        cell.textLabel?.text = events[indexPath.row].title
-        cell.detailTextLabel?.text = events[indexPath.row].description
-        
-        /*
+
+        var formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+    
         if indexPath.section == 0 {
-            let (eventTitle,eventDay) = eventsArray[indexPath.row]
-            
-            cell.textLabel?.text = eventTitle
-            cell.detailTextLabel?.text = eventDay
+        
+            cell.textLabel?.text = todaysEvents[indexPath.row].title
+            //let dateString = formatter.stringFromDate((todaysEvents[indexPath.row].date)!)
+            cell.detailTextLabel?.text = todaysEvents[indexPath.row].description
         
         } else {
-            let (eventTitle,eventDay) = todaysArray[indexPath.row]
             
-            cell.textLabel?.text = eventTitle
-            cell.detailTextLabel?.text = eventDay
+            cell.textLabel?.text = events[indexPath.row].title
+            let dateString = formatter.stringFromDate((events[indexPath.row].date)!)
+            cell.detailTextLabel?.text = dateString
+            
         }
-        
-        //var myImage = UIImage(named: "CellIcon")
-        //cell.imageView?.image = myImage
 
-        */
         
         return cell
     }
@@ -67,10 +63,20 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0 {
-            return "Week's Events"
-    
+            return "Todays Events"
         } else {
-            return "Today's Events"
+            
+            return "All Events"
+            
+        }
+    
+    }
+    
+    
+    func updateTodaysEvents(testEvent: Event) {
+        let calendar = NSCalendar.currentCalendar()
+        if calendar.isDateInToday(testEvent.date!) {
+            todaysEvents.append(testEvent)
         }
         
     }
@@ -90,6 +96,9 @@ class ViewController: UIViewController, UITableViewDataSource {
 */
     }
     
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -99,16 +108,26 @@ class ViewController: UIViewController, UITableViewDataSource {
             
             nextScene.event = events[self.eventTable.indexPathForSelectedRow!.row]
             
-            
-            /*let detailsScene = segue.destinationViewController as! EventDetailsViewController
-            if let indexPath = self.eventTable.indexPathForSelectedRow{
-                let selectedEvent = events[indexPath.row]
-                detailsScene.event = selectedEvent
-                print(selectedEvent.title)
-            }*/
         }
         
         
+    }
+    
+    
+    @IBAction func saveNewEvent(segue: UIStoryboardSegue) {
+        if let CreateEventTableViewController = segue.sourceViewController as? CreateEventTableViewController {
+            
+            //add new event to the events array
+            if let event = CreateEventTableViewController.event {
+                events.append(event)
+                
+                updateTodaysEvents(event)
+                
+                eventTable.reloadData()
+              
+            }
+            
+        }
     }
     
     

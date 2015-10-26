@@ -17,6 +17,7 @@
 		B46E08ED1BDAF15800F8D3EA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E08EC1BDAF15800F8D3EA /* Event.swift */; settings = {ASSET_TAGS = (); }; };
 		B46E08EF1BDAF69C00F8D3EA /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E08EE1BDAF69C00F8D3EA /* EventDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B46E08F11BDB015A00F8D3EA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E08F01BDB015A00F8D3EA /* NewEventViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		B46E08F51BDC083100F8D3EA /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E08F41BDC083100F8D3EA /* CreateEventTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		B46E08EC1BDAF15800F8D3EA /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = BetterCalendar/Event.swift; sourceTree = "<group>"; };
 		B46E08EE1BDAF69C00F8D3EA /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		B46E08F01BDB015A00F8D3EA /* NewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		B46E08F41BDC083100F8D3EA /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventTableViewController.swift; path = ../CreateEventTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				B46E089C1BD8573100F8D3EA /* ViewController.swift */,
 				B46E08EE1BDAF69C00F8D3EA /* EventDetailsViewController.swift */,
 				B46E089E1BD8573100F8D3EA /* Main.storyboard */,
+				B46E08F41BDC083100F8D3EA /* CreateEventTableViewController.swift */,
 				B46E08F01BDB015A00F8D3EA /* NewEventViewController.swift */,
 				B46E08A11BD8573100F8D3EA /* Assets.xcassets */,
 				B46E08A31BD8573100F8D3EA /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 				B46E089D1BD8573100F8D3EA /* ViewController.swift in Sources */,
 				B46E08F11BDB015A00F8D3EA /* NewEventViewController.swift in Sources */,
 				B46E08ED1BDAF15800F8D3EA /* Event.swift in Sources */,
+				B46E08F51BDC083100F8D3EA /* CreateEventTableViewController.swift in Sources */,
 				B46E089B1BD8573100F8D3EA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
